@@ -309,7 +309,7 @@ public:
      int p3_index=FINDDIFFERENTINDEX(set,i_index); 
      //float * voxel_grid_TDF 
      // std::cout<<batch_idx<<std::endl;   
-     
+     //std::cout<<num_pts<<" "<<i_index<<" "<<p2_index<<" "<<p3_index<<std::endl;
       float * voxel_grid_TDF_p1 = TDFPATCH(keypts_grid,num_pts,i_index, voxel_grid_dim_z,voxel_grid_dim_x,voxel_grid_dim_y,voxel_grid_TDF);
       float * voxel_grid_TDF_p2 = TDFPATCH(keypts_grid,num_pts,p2_index, voxel_grid_dim_z,voxel_grid_dim_x,voxel_grid_dim_y,voxel_grid_TDF);
       float * voxel_grid_TDF_p3 = TDFPATCH(keypts_grid,num_pts,p3_index, voxel_grid_dim_z,voxel_grid_dim_x,voxel_grid_dim_y,voxel_grid_TDF);    
@@ -436,9 +436,9 @@ public:
   float* TDFPATCH(float* grid,int num,int index,int voxel_grid_dim_z,int voxel_grid_dim_x,int voxel_grid_dim_y,float*voxel_grid_TDF,int dim=30)
   {
     float * local_voxel_grid_TDF = new float[dim*dim*dim];
-    int keypt_grid_x=grid[index*3];
-    int keypt_grid_y=grid[index*3+1];
-    int keypt_grid_z=grid[index*3+2];
+    int keypt_grid_x=(int)grid[index*3];
+    int keypt_grid_y=(int)grid[index*3+1];
+    int keypt_grid_z=(int)grid[index*3+2];
     int local_voxel_idx=0;
     StorageT * local_voxel_grid_TDF1 = new StorageT[30 * 30 * 30];
     for (int z = keypt_grid_z - 15; z < keypt_grid_z + 15; ++z)
